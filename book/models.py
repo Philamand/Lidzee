@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Book(models.Model):
@@ -7,6 +8,9 @@ class Book(models.Model):
     cover = models.ImageField(upload_to="books/covers/")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def get_absolute_url(self) -> str:
+        return reverse("book_detail", kwargs={"pk": self.pk})
 
     def __str__(self):
         return self.title

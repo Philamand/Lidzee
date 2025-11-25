@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container-fluid p-0 vh-100" x-data="book({{ pages }})" x-init="setColClass" x-resize="setColClass" @click="turnPage">
+        <div class="row g-0 h-100">
+        <div :class="colClass">
+            <img :src="pages[currentIndex].image" alt="{{ book.title }}" class="h-100 w-100" />
+        </div>
+        <div class="d-flex align-items-center justify-content-center" :class="colClass">
+            <p x-text="pages[currentIndex].text"></p>
+        </div>
+        </div>
+    </div>
+    {% for audio in audios %}
+        <audio id="{{ audio.id }}" src="{{ audio.url }}" preload="auto"></audio>
+    {% endfor %}
+
+    <script>
+        function book(pages) {
+            return {
+                pages: pages,
+                currentIndex: 0,
+                colClass: "col-12 h-50",
+
+                setColClass() {
+                    if (window.screen.width > window.screen.height) {
+                        this.colClass = "col-6 h-100";
+                    } else {
+                        this.colClass = "col-12 h-50";
+                    }
+                },
+
+                turnPage(e) {
+                    if (this.currentIndex > 0) {
+                        document.getElementById(`audio-${this.currentIndex}`).pause();
+                        document.getElementById(`audio-${this.currentIndex}`).currentTime = 0;
+                    }
+
+                    if (e.clientX > window.screen.width / 2 && this.currentIndex <= this.pages.length - 2) {
+                        this.currentIndex++;
+                        document.getElementById(`audio-${this.currentIndex}`).play();
+                    } else if (e.clientX < window.screen.width / 2 && this.currentIndex > 0) {
+                        this.currentIndex--;
+                    }
+                }
+            }
+        }
+    </script>
+{% endblock %}
