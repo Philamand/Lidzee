@@ -6,8 +6,8 @@
         <div :class="colClass">
             <img :src="pages[currentIndex].image" alt="{{ book.title }}" class="h-100 w-100" />
         </div>
-        <div class="d-flex align-items-center justify-content-center" :class="colClass">
-            <p x-text="pages[currentIndex].text"></p>
+        <div class="d-flex align-items-center justify-content-center p-4" :class="colClass">
+            <p class="text-center" x-text="pages[currentIndex].text"></p>
         </div>
         </div>
     </div>
