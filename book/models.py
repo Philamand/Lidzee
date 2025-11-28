@@ -8,11 +8,12 @@ class Book(models.Model):
     cover = models.ImageField(upload_to="books/covers/")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    published = models.BooleanField(default=False)
 
     def get_absolute_url(self) -> str:
         return reverse("book_detail", kwargs={"pk": self.pk})
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.title
 
 

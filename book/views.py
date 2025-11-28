@@ -6,6 +6,7 @@ from .models import Book, Page
 
 class BookListView(ListView):
     model = Book
+    queryset = Book.objects.filter(published=True)
     context_object_name = "book_list"
     ordering = "title"
 
