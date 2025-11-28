@@ -1,6 +1,14 @@
 from django.contrib import admin
 from .models import Book, Page
+from .widgets import AudioRecorderWidget
 
 
 admin.site.register(Book)
-admin.site.register(Page)
+
+
+@admin.register(Page)
+class PageModelAdmin(admin.ModelAdmin):
+    def formfield_for_dbfield(self, db_field, request, **kwargs):
+        if db_field.name == "audio":
+            kwargs["widget"] = AudioRecorderWidget
+        return super().formfield_for_dbfield(db_field, request, **kwargs)

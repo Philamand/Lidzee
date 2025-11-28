@@ -1,0 +1,15 @@
+<div class="audio-recorder">
+    {% if widget.is_initial %}
+        <p>Current: <a href="{{ widget.value.url }}">{{ widget.value }}</a></p>
+    {% endif %}
+
+    <p>
+        Change:
+        <input type="file" name="{{ widget.name }}" id="id_audio" accept="audio/*" {% if widget.value %}value="{{ widget.value }}"{% endif %}>
+    </p>
+    <button type="button" id="start-recording">Start Recording</button>
+    <button type="button" id="stop-recording" disabled>Stop Recording</button>
+    <audio id="preview" controls style="display:none; margin-top:10px;"></audio>
+
+    <input type="file" id="recorded-file-input" style="display:none;" accept="audio/*">
+</div>
