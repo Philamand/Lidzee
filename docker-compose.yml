@@ -6,11 +6,16 @@ services:
       - .:/app
     ports:
       - "8000:8000"
+    env_file:
+      - .env
     depends_on:
       - app-db
+      - redis
   app-db:
     image: postgres:16
     environment:
       POSTGRES_USER: django
       POSTGRES_PASSWORD: securepassword
       POSTGRES_DB: django-db
+  redis:
+    image: redis:8-alpine
