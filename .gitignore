@@ -24,3 +24,4 @@ media/
 .vscode/
 
 svelte/node_modules/
+svelte/.vite/
