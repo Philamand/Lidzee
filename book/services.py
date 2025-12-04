@@ -1,6 +1,5 @@
 from typing import Dict, Any
 from .models import Book
-import json
 
 
 def get_book_pages(book: Book) -> Dict[str, Any]:
@@ -17,4 +16,4 @@ def get_book_pages(book: Book) -> Dict[str, Any]:
 
         pages.append({"image": page.image.url, "text": page.text})
 
-    return {"pages": json.dumps(pages), "audios": audios}
+    return {"pages": pages, "audios": audios}
