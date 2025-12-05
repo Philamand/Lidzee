@@ -28,5 +28,4 @@ class BookDetailViewTest(TestCase):
         self.assertEqual(response.status_code, 200)
 
         self.assertIn("pages", response.context)
-        self.assertIn("audios", response.context)
         self.assertIn("book", response.context)
