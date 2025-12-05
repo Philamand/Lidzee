@@ -9,7 +9,6 @@
         <script type="module" src="{% static 'svelte/book_detail.js' %}"></script>
     {% endif %}
     {{ pages|json_script:"pages-data" }}
-    {{ audios|json_script:"audios-data" }}
 {% endblock %}
 
 {% block content %}

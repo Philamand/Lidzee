@@ -9,11 +9,13 @@ def get_book_pages(book: Book) -> Dict[str, Any]:
 
     pages = [{"image": book.cover.url, "text": book.title}]
 
-    audios = []
-
     for index, page in enumerate(book.page_set.order_by("id"), start=1):
-        audios.append({"id": f"audio-{index}", "url": page.audio.url})
+        pages.append(
+            {
+                "image": page.image.url,
+                "text": page.text,
+                "audio": {"id": f"audio-{index}", "url": page.audio.url},
+            }
+        )
 
-        pages.append({"image": page.image.url, "text": page.text})
-
-    return {"pages": pages, "audios": audios}
+    return {"pages": pages}

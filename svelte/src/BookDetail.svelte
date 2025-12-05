@@ -7,9 +7,6 @@
     let height = $state(0);
     let colClass = $derived(width > height ? "flex-row" : "flex-col");
     const pages = JSON.parse(document.getElementById("pages-data").textContent);
-    const audios = JSON.parse(
-        document.getElementById("audios-data").textContent,
-    );
 
     function onclick(event) {
         if (currentIndex > 0) {
@@ -62,14 +59,16 @@
             </div>
         </div>
     </div>
-    {#each audios as audio}
-        <audio
-            id={audio.id}
-            src={audio.url}
-            preload="auto"
-            onended={() => {
-                autoplay && onclick({ clientX: 10000 });
-            }}
-        ></audio>
+    {#each pages as page}
+        {#if page.audio}
+            <audio
+                id={page.audio.id}
+                src={page.audio.url}
+                preload="auto"
+                onended={() => {
+                    autoplay && onclick({ clientX: 10000 });
+                }}
+            ></audio>
+        {/if}
     {/each}
 </main>
