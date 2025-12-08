@@ -10,16 +10,22 @@
 
     function onclick(event) {
         if (currentIndex > 0) {
-            document.getElementById(`audio-${currentIndex}`).pause();
-            document.getElementById(`audio-${currentIndex}`).currentTime = 0;
+            let audioPlayer = document.getElementById(`audio-${currentIndex}`);
+            if (audioPlayer) {
+                audioPlayer.pause();
+                audioPlayer.currentTime = 0;
+            }
         }
 
         if (
             event.clientX > window.screen.width / 2 &&
             currentIndex < pages.length - 1
         ) {
+            let audioPlayer = document.getElementById(`audio-${currentIndex}`);
             currentIndex++;
-            document.getElementById(`audio-${currentIndex}`).play();
+            if (audioPlayer) {
+                audioPlayer.play();
+            }
         } else if (
             event.clientX < window.screen.width / 2 &&
             currentIndex > 0
