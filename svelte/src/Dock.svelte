@@ -7,6 +7,9 @@
         if (dockData.autoplay) {
             dockData.sound = true;
         }
+
+        localStorage.setItem("autoplay", dockData.autoplay);
+        localStorage.setItem("sound", dockData.sound);
     }
 
     function switchSound() {
@@ -29,6 +32,9 @@
                 audioPlayer.play();
             }
         }
+
+        localStorage.setItem("autoplay", dockData.autoplay);
+        localStorage.setItem("sound", dockData.sound);
     }
 </script>
 
