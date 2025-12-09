@@ -53,7 +53,7 @@
 <div class="dock">
     <a href="/">
         <House />
-        <span class="dock-label">Home</span>
+        <span class="dock-label">Accueil</span>
     </a>
 
     <button onclick={switchAutoplay}>
@@ -87,6 +87,6 @@
 
             <Moon class="swap-on" />
         </label>
-        <span class="dock-label">Theme</span>
+        <span class="dock-label">Thème</span>
     </div>
 </div>
