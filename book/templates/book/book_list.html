@@ -17,26 +17,7 @@
 {% block content %}
 <div class="p-4">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-col-6 gap-4">
-        {% for book in book_list %}
-            <div>
-                <a class="card bg-base-100 w-full shadow-sm" href="{{ book.get_absolute_url }}">
-                    <figure>
-                        <img
-                        src="{{ book.cover.url }}"
-                        alt="{{ book.title }} cover" />
-                    </figure>
-                    <div class="card-body">
-                        <h2 class="card-title">{{ book.title }}</h2>
-                        <div class="flex gap-2">
-                            {% for tag in book.tags.all %}
-                                <div class="badge badge-primary">{{ tag }}</div>
-                            {% endfor %}
-                        </div>
-                        <p>{{ book.description }}</p>
-                    </div>
-                </a>
-            </div>
-        {% endfor %}
+        {% include "book/components/book_list.html" %}
     </div>
 </div>
 {% endblock %}

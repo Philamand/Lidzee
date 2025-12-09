@@ -1,0 +1,20 @@
+{% for book in book_list %}
+    <div>
+        <a class="card bg-base-100 w-full h-full shadow-sm" href="{{ book.get_absolute_url }}">
+            <figure>
+                <img
+                src="{{ book.cover.url }}"
+                alt="{{ book.title }} cover" />
+            </figure>
+            <div class="card-body">
+                <h2 class="card-title">{{ book.title }}</h2>
+                <div class="flex gap-2">
+                    {% for tag in book.tags.all %}
+                        <div class="badge badge-primary">{{ tag }}</div>
+                    {% endfor %}
+                </div>
+                <p>{{ book.description }}</p>
+            </div>
+        </a>
+    </div>
+{% endfor %}
