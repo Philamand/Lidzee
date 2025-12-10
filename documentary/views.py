@@ -1,3 +1,12 @@
-from django.shortcuts import render
+from django.views.generic import ListView
+from django.db.models.query import QuerySet
+from .models import Documentary
 
-# Create your views here.
+
+class DocumentaryListView(ListView):
+    model = Documentary
+    context_object_name = "documentary_list"
+    ordering = "title"
+
+    def get_queryset(self) -> QuerySet[Documentary]:
+        return super().get_queryset().filter(published=True)

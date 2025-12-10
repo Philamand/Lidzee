@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Once Upon A Time
+{% endblock %}
+
+{% block content %}
+<div class="p-4 pb-18">
+    <div id="documentary_list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-col-6 gap-4">
+        {% for documentary in documentary_list %}
+            <div>
+                <a class="card bg-base-100 w-full h-full shadow-sm" href="#">
+                    <figure>
+                        <img
+                        src="{{ documentary.image.url }}"
+                        alt="{{ documentary.title }} cover" />
+                    </figure>
+                    <div class="card-body">
+                        <h2 class="card-title">{{ documentary.title }}</h2>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
