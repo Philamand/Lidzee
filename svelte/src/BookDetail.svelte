@@ -18,7 +18,7 @@
         }
 
         if (
-            event.clientX > window.screen.width / 2 &&
+            event.clientX > window.screen.width / 4 &&
             dockData.currentIndex < pages.length - 1
         ) {
             dockData.currentIndex++;
@@ -29,7 +29,7 @@
                 audioPlayer.play();
             }
         } else if (
-            event.clientX < window.screen.width / 2 &&
+            event.clientX < window.screen.width / 4 &&
             dockData.currentIndex > 0
         ) {
             dockData.currentIndex--;
