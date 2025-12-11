@@ -9,6 +9,7 @@ class BookListView(ListView):
     model = Book
     context_object_name = "book_list"
     ordering = "title"
+    paginate_by = 6
 
     def get_queryset(self) -> QuerySet[Book]:
         queryset: QuerySet[Book] = super().get_queryset()
