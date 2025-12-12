@@ -12,7 +12,9 @@ class BookListView(ListView):
     paginate_by = 6
 
     def get_queryset(self) -> QuerySet[Book]:
-        queryset: QuerySet[Book] = super().get_queryset().filter(published=True)
+        queryset: QuerySet[Book] = (
+            super().get_queryset().filter(published=True, owner=None)
+        )
 
         return queryset
 

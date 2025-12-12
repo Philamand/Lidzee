@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 from django.urls import reverse
 
 
@@ -25,6 +26,9 @@ class Book(BaseModel):
     published = models.BooleanField(default=False)
 
     tags = models.ManyToManyField(Tag, related_name="books", blank=True)
+    owner = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True
+    )
 
     def __str__(self) -> str:
         return self.title
