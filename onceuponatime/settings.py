@@ -28,6 +28,8 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    "allauth",
+    "allauth.account",
     "django.contrib.staticfiles",
     "pwa",
     "book.apps.BookConfig",
@@ -41,6 +43,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = "onceuponatime.urls"
@@ -80,8 +83,13 @@ DATABASES = {
 
 
 # ─────────────────────────────────────────────────────────────
-# PASSWORD VALIDATION
+# AUTHENTICATION & PASSWORD VALIDATION
 # ─────────────────────────────────────────────────────────────
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+]
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
