@@ -64,6 +64,16 @@
                 dockData.currentIndex > 0
             ) {
                 dockData.currentIndex--;
+                let audioPlayer = document.getElementById(
+                    `audio-${dockData.currentIndex}`,
+                );
+                if (
+                    dockData.currentIndex > 0 &&
+                    audioPlayer &&
+                    dockData.sound
+                ) {
+                    audioPlayer.play();
+                }
             }
             last_time = current_time;
         }
