@@ -2,6 +2,7 @@
     import { onMount } from "svelte";
     import { useSwipe } from "svelte-gestures";
     import { dockData } from "./dock_data.svelte";
+    import Loading from "./lib/Loading.svelte";
 
     let loading = $state(true);
     let width = $state(0);
@@ -121,18 +122,7 @@
             </div>
         </div>
     {:else}
-        <div class="h-screen w-full flex flex-col justify-center">
-            <div class="w-full flex justify-center mb-4">
-                <span class="loading loading-ring loading-xl"></span>
-            </div>
-            <div class="w-full flex justify-center">
-                <progress
-                    class="progress progress-primary w-56"
-                    value={progress_count}
-                    max={pages.length}
-                ></progress>
-            </div>
-        </div>
+        <Loading value={progress_count} max={pages.length} />
     {/if}
 
     {#each pages as page}
